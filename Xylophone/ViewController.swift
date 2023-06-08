@@ -19,12 +19,13 @@ class ViewController: UIViewController {
 
     // play C sound when button is pressed
     @IBAction func keyPressed(_ sender: UIButton) {
-        print("button pressed")
-        playSound()
+        let key = sender.currentTitle!
+        print("button pressed \(key)")
+        playSound(key: key)
     }
 
-    func playSound() {
-        let url = Bundle.main.url(forResource: "C", withExtension: "wav")
+    func playSound(key: String = "C") {
+        let url = Bundle.main.url(forResource: key, withExtension: "wav")
         player = try! AVAudioPlayer(contentsOf: url!)
         player!.play()
     }
